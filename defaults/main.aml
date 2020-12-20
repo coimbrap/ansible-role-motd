@@ -1,0 +1,4 @@
+---
+path_motd: /etc/motd
+ascii_font: bloody
+text: "{{ inventory_hostname }}"

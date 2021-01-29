@@ -1,5 +1,5 @@
 ---
-- name: Generate MOTD
+- name: generate MOTD
   shell: |
     echo " " > "../ssh/tmp-motd-{{ inventory_hostname }}"
     figlet -f "{{ role_path }}/vars/{{ ascii_font }}.flf" "{{ text }}" >> "../ssh/tmp-motd-{{ inventory_hostname }}"
@@ -7,7 +7,7 @@
   delegate_to: localhost
   tags: motd
 
-- name: Copy a new "sudoers" file into place, after passing validation with visudo
+- name: copy MOTD to remote host
   copy:
     src: "../ssh/tmp-motd-{{ inventory_hostname }}"
     dest: "{{ path_motd }}"
